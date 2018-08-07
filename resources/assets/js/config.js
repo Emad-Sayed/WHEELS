@@ -12,6 +12,17 @@ export const GetHeaders =function () {
     }
     return headers
 }
+export const GetFileSubmitHeaders =function () {
+    const token=window.localStorage.getItem("token")
+    const headers={
+        'Accept':'application/json',
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Authorization':'Bearer '+token,
+        'Content-Type': 'multipart/form-data'
+
+    }
+    return headers
+}
 export const isSet =function () {
     if(window.localStorage.getItem('token')===null)
         return false

@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    $start=new \Carbon\Carbon();
-    $end=new \Carbon\Carbon();
-    $end->addDays(4);
-    $rented=new \App\rentedCar();
-    return $start;
+    return \App\Car::where('state',1)->update(['state'=>'0']);
 });
 Route::get('testa', 'API\AdminController@update_cars_status');

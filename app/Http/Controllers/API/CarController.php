@@ -95,19 +95,11 @@ class CarController extends Controller
         return response()->json(['success'=>$rentedCar],200);
     }
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
 
     public function destroy($id)
     {
-        $rented=rentedCar::select('id')->where('car_id','=',$id)->get();
-        if(count($rented))
-            $rented->delete();
-        $car=Car::findorfail($id);
-        $car->delete();
+        rentedCar::where('car_id','=',$id)->delete();
+        $car=Car::where('id',$id)->delete();
         return response()->json(['success'=>$car],200);
     }
 }

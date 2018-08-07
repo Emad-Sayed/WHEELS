@@ -42,7 +42,7 @@
 </template>
 
 <script>
-    import {GetHeaders,isSet} from '../../config'
+    import {GetHeaders,GetFileSubmitHeaders,isSet} from '../../config'
     export default{
         data(){
             return {
@@ -97,9 +97,7 @@
                 axios.post( 'api/car',
                     formData,
                     {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
+                        headers:GetFileSubmitHeaders()
                     })
                     .then(response => {
                         console.log(response);

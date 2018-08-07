@@ -488,12 +488,15 @@ module.exports = {
 
 "use strict";
 /* unused harmony export apiDomain */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return loginURL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return registURL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return loginURL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return registURL; });
 /* unused harmony export userURL */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetHeaders; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isSet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdmin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GetHeaders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetFileSubmitHeaders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isSet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isAdmin; });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var apiDomain = "http://localhost:8000";
 var loginURL = "api/login";
 var registURL = "api/register";
@@ -506,6 +509,15 @@ var GetHeaders = function GetHeaders() {
         'Authorization': 'Bearer ' + token
 
     };
+    return headers;
+};
+var GetFileSubmitHeaders = function GetFileSubmitHeaders() {
+    var token = window.localStorage.getItem("token");
+    var headers = _defineProperty({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + token
+    }, "Content-Type", 'multipart/form-data');
     return headers;
 };
 var isSet = function isSet() {
@@ -28347,17 +28359,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        if (Object(__WEBPACK_IMPORTED_MODULE_0__config__["c" /* isSet */])()) this.$router.push('/home');
+        if (Object(__WEBPACK_IMPORTED_MODULE_0__config__["d" /* isSet */])()) this.$router.push('/home');
     },
 
     methods: {
         checkLogin: function checkLogin() {
             var _this = this;
 
-            axios.post(__WEBPACK_IMPORTED_MODULE_0__config__["d" /* loginURL */], this.loginInfo).then(function (response) {
+            axios.post(__WEBPACK_IMPORTED_MODULE_0__config__["e" /* loginURL */], this.loginInfo).then(function (response) {
                 if (response.status === 200) {
                     window.localStorage.setItem('token', response.data.success.token);
-                    axios.post('api/details', { data: {} }, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                    axios.post('api/details', { data: {} }, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                         window.localStorage.setItem('user', JSON.stringify(response.data.success));
                         _this.$router.push('/home');
                     });
@@ -28370,9 +28382,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         regist: function regist() {
             var _this2 = this;
 
-            axios.post(__WEBPACK_IMPORTED_MODULE_0__config__["e" /* registURL */], this.registInfo).then(function (response) {
+            axios.post(__WEBPACK_IMPORTED_MODULE_0__config__["f" /* registURL */], this.registInfo).then(function (response) {
                 window.localStorage.setItem('token', response.data.success.token);
-                axios.post('api/details', { data: {} }, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                axios.post('api/details', { data: {} }, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                     window.localStorage.setItem('user', JSON.stringify(response.data.success));
                     _this2.$router.push('/home');
                 });
@@ -29434,7 +29446,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getCar: function getCar() {
             var _this = this;
 
-            axios.get('api/car/' + this.car_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (respone) {
+            axios.get('api/car/' + this.car_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (respone) {
                 _this.car = respone.data.success;
                 if (_this.car.state == 0) {
                     _this.message = 'GET CAR';
@@ -29545,11 +29557,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Cash: function Cash() {
             var _this = this;
 
-            if (Object(__WEBPACK_IMPORTED_MODULE_0__config_js__["c" /* isSet */])()) {
+            if (Object(__WEBPACK_IMPORTED_MODULE_0__config_js__["d" /* isSet */])()) {
                 var formData = new FormData();
                 formData.append('car_id', this.carRequest.car_id);
                 formData.append('numberOfDays', this.carRequest.numberOfDays);
-                axios.post('api/carRequest', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config_js__["a" /* GetHeaders */])() }).then(function (respone) {
+                axios.post('api/carRequest', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config_js__["b" /* GetHeaders */])() }).then(function (respone) {
                     _this.changeRF_Label();
                 }).catch(function (error) {
                     _this.ErrorMessage = true;
@@ -30605,12 +30617,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {};
     },
     created: function created() {
-        if (!Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* isAdmin */])()) this.$router.push('/login');else this.updateCarsStatus();
+        if (!Object(__WEBPACK_IMPORTED_MODULE_0__config__["c" /* isAdmin */])()) this.$router.push('/login');else this.updateCarsStatus();
     },
 
     methods: {
         updateCarsStatus: function updateCarsStatus() {
-            axios.get('api/updateStatus', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {});
+            axios.get('api/updateStatus', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {});
         }
     }
 });
@@ -31493,7 +31505,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getCars: function getCars() {
             var _this = this;
 
-            axios.get('api/Allcars', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+            axios.get('api/Allcars', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                 _this.cars = response.data.success;
                 _this.Spinner = false;
             });
@@ -31502,7 +31514,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (confirm("are you sure you want to delete the car?")) {
-                axios.delete('api/car/' + car_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                axios.delete('api/car/' + car_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                     _this2.getCars();
                 }).catch(function (err) {
                     console.log(err);
@@ -31521,7 +31533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (confirm('are you sure you want to set the car to available ?')) {
                 var formData = new FormData();
                 formData.append('car_id', car.id);
-                axios.post('api/setAvailable', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                axios.post('api/setAvailable', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                     _this3.getCars();
                 });
             }
@@ -31532,7 +31544,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (confirm('are you sure you want to set the car to unavailable ?')) {
                 var formData = new FormData();
                 formData.append('car_id', car.id);
-                axios.post('api/setUnavailable', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                axios.post('api/setUnavailable', formData, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                     _this4.getCars();
                 });
             }
@@ -31831,7 +31843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getRentedCars: function getRentedCars() {
             var _this = this;
 
-            axios.get('api/rentedCars', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+            axios.get('api/rentedCars', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                 _this.rentedCars = response.data.success;
                 _this.Spinner = false;
             });
@@ -32052,7 +32064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getCategories: function getCategories() {
             var _this = this;
 
-            axios.get('api/categoriesTable', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+            axios.get('api/categoriesTable', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                 _this.categories = response.data.success;
                 _this.cateoriesTemp = response.data.success;
                 _this.Spinner = false;
@@ -32062,7 +32074,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (confirm("Are you sure you want to delete the category with it's cars?")) {
-                axios.delete('api/category/' + cat_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+                axios.delete('api/category/' + cat_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                     _this2.getCategories();
                 }).catch(function (err) {
                     console.log(err);
@@ -32338,7 +32350,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getCategories: function getCategories() {
             var _this = this;
 
-            axios.get('api/categoriesTable', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (response) {
+            axios.get('api/categoriesTable', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (response) {
                 _this.categories = response.data.success;
             });
         },
@@ -32360,9 +32372,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formData.append('model', this.car.model);
             formData.append('category_id', this.car.categoryID);
             axios.post('api/car', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetFileSubmitHeaders */])()
             }).then(function (response) {
                 console.log(response);
             }).catch(function () {
@@ -32879,7 +32889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         Draw: function Draw() {
-            axios.get('api/statistics', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["a" /* GetHeaders */])() }).then(function (respone) {
+            axios.get('api/statistics', { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (respone) {
                 var AvailableCars = respone.data.success.Available;
                 var Unavailable = respone.data.success.Unavailable;
                 var ctxP = document.getElementById("pieChart").getContext('2d');
