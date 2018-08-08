@@ -62,8 +62,7 @@ class CarController extends Controller
 
     public function show($id)
     {
-        $car=Car::findorfail($id);
-        $car['category_name']=$car->type->categoryName;
+        $car=Car::with('type')->where('id',$id)->get();
         return response()->json(['success'=>$car],200);
     }
 
@@ -98,8 +97,7 @@ class CarController extends Controller
 
     public function destroy($id)
     {
-        rentedCar::where('car_id','=',$id)->delete();
-        $car=Car::where('id',$id)->delete();
+        $car=Car::findorfail($id)->Delete();
         return response()->json(['success'=>$car],200);
     }
 }

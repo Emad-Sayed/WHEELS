@@ -29447,7 +29447,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('api/car/' + this.car_id, { headers: Object(__WEBPACK_IMPORTED_MODULE_0__config__["b" /* GetHeaders */])() }).then(function (respone) {
-                _this.car = respone.data.success;
+                _this.car = respone.data.success[0];
+                console.log(_this.car);
                 if (_this.car.state == 0) {
                     _this.message = 'GET CAR';
                 } else {
@@ -29723,17 +29724,19 @@ var render = function() {
           [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
-                _c("h1", [_vm._v(_vm._s(_vm.car.category_name))])
+                _c("h1", [_vm._v(_vm._s(_vm.car.type.categoryName))])
               ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-12" }, [
                 _c("span", { staticClass: "label label-primary" }, [
-                  _vm._v(_vm._s(_vm.car.model))
+                  _vm._v("Model")
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "monospaced" }, [_vm._v(" WERCX")])
+                _c("span", { staticClass: "monospaced" }, [
+                  _vm._v(" " + _vm._s(_vm.car.model))
+                ])
               ])
             ]),
             _c("div", { staticClass: "row" }, [

@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    return \App\Car::where('state',1)->update(['state'=>'0']);
+    return \App\Car::with('RentedCar')->where('id','74')->get();
+
 });
 Route::get('testa', 'API\AdminController@update_cars_status');

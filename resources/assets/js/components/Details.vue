@@ -5,12 +5,12 @@
             <img  v-bind:src="car_url+car.image" class="image-responsive">
         </div>
             <div class="col-md-6"><div class="row"><div class="col-md-12">
-                <h1>{{car.category_name}}</h1>
+                <h1>{{car.type.categoryName}}</h1>
             </div></div>
                 <div class="row">
                 <div class="col-md-12">
-                    <span class="label label-primary">{{car.model}}</span>
-                    <span class="monospaced"> WERCX</span></div>
+                    <span class="label label-primary">Model</span>
+                    <span class="monospaced"> {{car.model}}</span></div>
                 </div><div class="row"><div class="col-md-12">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -73,7 +73,8 @@
             getCar(){
                 axios.get('api/car/'+this.car_id,{headers:GetHeaders()})
                     .then(respone=>{
-                        this.car=respone.data.success
+                        this.car=respone.data.success[0]
+                        console.log(this.car)
                         if(this.car.state==0){
                             this.message='GET CAR'
                         }

@@ -12,4 +12,12 @@ class Car extends Model
     {
         return $this->belongsTo('App\Category','category_id');
     }
+    public function RentedCar()
+    {
+        return $this->hasOne('App\rentedCar');
+    }
+    public function Delete(){
+        $this->RentedCar()->delete();
+        return parent::delete();
+    }
 }
