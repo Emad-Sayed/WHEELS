@@ -22,10 +22,7 @@
 </head>
 <div id="app">
     <div class="container">
-        <router-view name="Nav" ></router-view>
         <router-view name="Content" ></router-view>
-        <router-view name="Sidebar"></router-view>
-        <Myfooter></Myfooter>
     </div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>

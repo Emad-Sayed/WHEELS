@@ -28,85 +28,74 @@ const router =new VueRouter({
             }
         },
         {
-            path:'',
-            components:{
-                Content:Login
-            }
-        },
-        {
-            path:'/home',
-            name:'home',
-            components:{
-                Nav:Navbar,
-                Content:Content,
-            }
-        },
-        {
-            path:'/support',
-            components:{
-                Nav:Navbar,
-                Content:Supporters,
-            }
-        },
-        {
-            path:'/details',
-            name:'detailsName',
-            components:{
-                Nav:Navbar,
-                Content:Details,
-
-            },
-            props:true
-        },
-        {
-            path:'/dashboard',
-            name:'dash',
-            components:{
-                Nav:Navbar,
-                Sidebar:Sidebar,
-            },
-            children:[
-                {
-                    path: "carsTable",
-                    name: "CarsTable",
-                    component: CarsTable
-                },
-                {
-                    path: "categoriesTable",
-                    name: "CategoriesTable",
-                    component: CategoriesTable
-                },
-                {
-                    path: "rentedCars",
-                    name: "RentedCars",
-                    component: RentedTable
-                },
-                {
-                    path: "addCar",
-                    name: "AddCar",
-                    component: AddCar
-                },
-                {
-                    path: "addCategory",
-                    name: "AddCategory",
-                    component: AddCategory
-                },
-                {
-                    path: '',
-                    name: "Chart",
-                    component: Chart
-                },
-            ],
-
-
-        },
-
-        {
             path:'/logout',
             components:{
                 Content:LogOut
             }
         },
+        {
+            path:'',
+            components:{
+                Content:Navbar
+            },
+            children:[
+                {
+                    path:'home',
+                    component:Content
+                },
+                {
+                    path:'support',
+                    component:Supporters
+                },
+                {
+                    path:'/details',
+                    name:'detailsName',
+                    component:Details,
+                    props:true
+                },
+                {
+                    path:'/dashboard',
+                    name:'dash',
+                    component:Sidebar,
+                    children:[
+                        {
+                            path: "carsTable",
+                            name: "CarsTable",
+                            component: CarsTable
+                        },
+                        {
+                            path: "categoriesTable",
+                            name: "CategoriesTable",
+                            component: CategoriesTable
+                        },
+                        {
+                            path: "rentedCars",
+                            name: "RentedCars",
+                            component: RentedTable
+                        },
+                        {
+                            path: "addCar",
+                            name: "AddCar",
+                            component: AddCar
+                        },
+                        {
+                            path: "addCategory",
+                            name: "AddCategory",
+                            component: AddCategory
+                        },
+                        {
+                            path: '',
+                            name: "Chart",
+                            component: Chart
+                        },
+                    ],
+
+
+                },
+            ]
+        },
+
+
 
 
     ]

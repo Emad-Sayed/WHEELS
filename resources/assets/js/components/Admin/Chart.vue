@@ -28,8 +28,8 @@
                                 datasets: [
                                     {
                                         data: [AvailableCars,Unavailable],
-                                        backgroundColor: ["#F7464A", "#46BFBD", "#4D5360"],
-                                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
+                                        backgroundColor: ["#40ff00", "#F7464A",],
+                                        hoverBackgroundColor: ["#ffff00", "#5AD3D1"]
                                     }
                                 ]
 

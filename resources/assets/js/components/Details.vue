@@ -90,9 +90,9 @@
                 this.RF_Label=true;
                 this.GetCar_Label=false;
             },
-            update_RF_Label(updatedFlag){
-                this.RF_Label=updatedFlag;
-                this.car_state=1;
+            update_RF_Label(numberOfDays){
+                this.RF_Label=false
+                this.car_state=1
                 this.GetCar_Label=true;
                 this.message='You Have Got The Car';
             },

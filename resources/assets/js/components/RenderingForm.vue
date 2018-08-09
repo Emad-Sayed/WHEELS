@@ -18,7 +18,7 @@
         data(){
             return {
                 carRequest:{
-                    numberOfDays:0,
+                    numberOfDays:1,
                     car_id:this.car_id
                 },
                 message:'',
@@ -49,7 +49,7 @@
 
             },
             changeRF_Label(){
-                this.$emit('changeLabel',false)
+                this.$emit('changeLabel',this.carRequest.numberOfDays)
             }
         }
     }

@@ -50,23 +50,29 @@
 
             <!--Routings !-->
             <div >
+                <router-view></router-view>
 
                 </div>
             </div>
 
-
+        <!--Footer !-->
+        <Footer></Footer>
 
         </div>
 </template>
 
 <script>
     import {isSet} from '../config'
+    import Footer from '../components/Footer.vue'
     export default{
         data(){
             return {
                 isLogged:false,
                 user:{},
             };
+        },
+        components:{
+          'Footer':Footer
         },
 
         created(){

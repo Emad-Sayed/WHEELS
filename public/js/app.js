@@ -25115,8 +25115,6 @@ window.Vue = __webpack_require__(5);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('navbar', __webpack_require__(7));
-Vue.component('Myfooter', __webpack_require__(8));
 
 var app = new Vue({
   el: '#app',
@@ -25188,70 +25186,57 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
             Content: __WEBPACK_IMPORTED_MODULE_2__components_Login_vue___default.a
         }
     }, {
-        path: '',
-        components: {
-            Content: __WEBPACK_IMPORTED_MODULE_2__components_Login_vue___default.a
-        }
-    }, {
-        path: '/home',
-        name: 'home',
-        components: {
-            Nav: __WEBPACK_IMPORTED_MODULE_8__components_Navbar_vue___default.a,
-            Content: __WEBPACK_IMPORTED_MODULE_4__components_Content_vue___default.a
-        }
-    }, {
-        path: '/support',
-        components: {
-            Nav: __WEBPACK_IMPORTED_MODULE_8__components_Navbar_vue___default.a,
-            Content: __WEBPACK_IMPORTED_MODULE_5__components_Supporters_vue___default.a
-        }
-    }, {
-        path: '/details',
-        name: 'detailsName',
-        components: {
-            Nav: __WEBPACK_IMPORTED_MODULE_8__components_Navbar_vue___default.a,
-            Content: __WEBPACK_IMPORTED_MODULE_6__components_Details_vue___default.a
-
-        },
-        props: true
-    }, {
-        path: '/dashboard',
-        name: 'dash',
-        components: {
-            Nav: __WEBPACK_IMPORTED_MODULE_8__components_Navbar_vue___default.a,
-            Sidebar: __WEBPACK_IMPORTED_MODULE_7__components_Admin_Sidebar_vue___default.a
-        },
-        children: [{
-            path: "carsTable",
-            name: "CarsTable",
-            component: __WEBPACK_IMPORTED_MODULE_10__components_Admin_CarsTable_vue___default.a
-        }, {
-            path: "categoriesTable",
-            name: "CategoriesTable",
-            component: __WEBPACK_IMPORTED_MODULE_12__components_Admin_CategoryTable_vue___default.a
-        }, {
-            path: "rentedCars",
-            name: "RentedCars",
-            component: __WEBPACK_IMPORTED_MODULE_11__components_Admin_RentedTable_vue___default.a
-        }, {
-            path: "addCar",
-            name: "AddCar",
-            component: __WEBPACK_IMPORTED_MODULE_13__components_Admin_AddCar_vue___default.a
-        }, {
-            path: "addCategory",
-            name: "AddCategory",
-            component: __WEBPACK_IMPORTED_MODULE_14__components_Admin_AddCategory_vue___default.a
-        }, {
-            path: '',
-            name: "Chart",
-            component: __WEBPACK_IMPORTED_MODULE_15__components_Admin_Chart_vue___default.a
-        }]
-
-    }, {
         path: '/logout',
         components: {
             Content: __WEBPACK_IMPORTED_MODULE_3__components_Logout_vue___default.a
         }
+    }, {
+        path: '',
+        components: {
+            Content: __WEBPACK_IMPORTED_MODULE_8__components_Navbar_vue___default.a
+        },
+        children: [{
+            path: 'home',
+            component: __WEBPACK_IMPORTED_MODULE_4__components_Content_vue___default.a
+        }, {
+            path: 'support',
+            component: __WEBPACK_IMPORTED_MODULE_5__components_Supporters_vue___default.a
+        }, {
+            path: '/details',
+            name: 'detailsName',
+            component: __WEBPACK_IMPORTED_MODULE_6__components_Details_vue___default.a,
+            props: true
+        }, {
+            path: '/dashboard',
+            name: 'dash',
+            component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_Sidebar_vue___default.a,
+            children: [{
+                path: "carsTable",
+                name: "CarsTable",
+                component: __WEBPACK_IMPORTED_MODULE_10__components_Admin_CarsTable_vue___default.a
+            }, {
+                path: "categoriesTable",
+                name: "CategoriesTable",
+                component: __WEBPACK_IMPORTED_MODULE_12__components_Admin_CategoryTable_vue___default.a
+            }, {
+                path: "rentedCars",
+                name: "RentedCars",
+                component: __WEBPACK_IMPORTED_MODULE_11__components_Admin_RentedTable_vue___default.a
+            }, {
+                path: "addCar",
+                name: "AddCar",
+                component: __WEBPACK_IMPORTED_MODULE_13__components_Admin_AddCar_vue___default.a
+            }, {
+                path: "addCategory",
+                name: "AddCategory",
+                component: __WEBPACK_IMPORTED_MODULE_14__components_Admin_AddCategory_vue___default.a
+            }, {
+                path: '',
+                name: "Chart",
+                component: __WEBPACK_IMPORTED_MODULE_15__components_Admin_Chart_vue___default.a
+            }]
+
+        }]
     }]
 });
 /* harmony default export */ __webpack_exports__["a"] = (router);
@@ -29462,8 +29447,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.RF_Label = true;
             this.GetCar_Label = false;
         },
-        update_RF_Label: function update_RF_Label(updatedFlag) {
-            this.RF_Label = updatedFlag;
+        update_RF_Label: function update_RF_Label(numberOfDays) {
+            this.RF_Label = false;
             this.car_state = 1;
             this.GetCar_Label = true;
             this.message = 'You Have Got The Car';
@@ -29545,7 +29530,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             carRequest: {
-                numberOfDays: 0,
+                numberOfDays: 1,
                 car_id: this.car_id
             },
             message: '',
@@ -29573,7 +29558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         changeRF_Label: function changeRF_Label() {
-            this.$emit('changeLabel', false);
+            this.$emit('changeLabel', this.carRequest.numberOfDays);
         }
     }
 });
@@ -30992,6 +30977,8 @@ if (false) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Footer_vue__);
 //
 //
 //
@@ -31053,6 +31040,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -31062,6 +31052,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             user: {}
         };
     },
+
+    components: {
+        'Footer': __WEBPACK_IMPORTED_MODULE_1__components_Footer_vue___default.a
+    },
+
     created: function created() {
         if (this.$route.params.LoginFlag) {
             this.isLogged = true;
@@ -31085,78 +31080,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("nav", { staticClass: "navbar navbar-inverse" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "bs-example-navbar-collapse-1" }
-            },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
-                _c("li", [
-                  _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
-                    !_vm.isLogged ? _c("li", [_vm._m(2)]) : _vm._e()
-                  ])
-                ]),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("nav", { staticClass: "navbar navbar-inverse" }, [
+          _c("div", { staticClass: "container-fluid" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "bs-example-navbar-collapse-1" }
+              },
+              [
+                _vm._m(1),
                 _vm._v(" "),
-                _vm.isLogged
-                  ? _c("li", { staticClass: "dropdown" }, [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "dropdown-menu" }, [
-                        _c("li", [
-                          _c("a", { attrs: { id: "UserName", href: "#" } }, [
-                            _vm._v("Name :: "),
-                            _c("b", [_vm._v(_vm._s(_vm.user.name))]),
-                            _vm._v(" "),
-                            _c("br"),
-                            _c("br"),
-                            _vm._v("Balance  ::  "),
-                            _c("b", [_vm._v(_vm._s(_vm.user.userBalance))])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("li", {
-                          staticClass: "divider",
-                          attrs: { role: "separator" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm.user.type_id == 1
-                          ? _c("li", [
-                              _c("a", { attrs: { href: "/#/dashboard" } }, [
-                                _vm._v("Dashboard")
-                              ])
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("li", {
-                          staticClass: "divider",
-                          attrs: { role: "separator" }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(5)
-                      ])
+                _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
+                  _c("li", [
+                    _c("ul", { staticClass: "nav navbar-nav navbar-right" }, [
+                      !_vm.isLogged ? _c("li", [_vm._m(2)]) : _vm._e()
                     ])
-                  : _vm._e()
-              ])
-            ]
-          )
-        ])
+                  ]),
+                  _vm._v(" "),
+                  _vm.isLogged
+                    ? _c("li", { staticClass: "dropdown" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("ul", { staticClass: "dropdown-menu" }, [
+                          _c("li", [
+                            _c("a", { attrs: { id: "UserName", href: "#" } }, [
+                              _vm._v("Name :: "),
+                              _c("b", [_vm._v(_vm._s(_vm.user.name))]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _c("br"),
+                              _vm._v("Balance  ::  "),
+                              _c("b", [_vm._v(_vm._s(_vm.user.userBalance))])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", {
+                            staticClass: "divider",
+                            attrs: { role: "separator" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _vm.user.type_id == 1
+                            ? _c("li", [
+                                _c("a", { attrs: { href: "/#/dashboard" } }, [
+                                  _vm._v("Dashboard")
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("li", {
+                            staticClass: "divider",
+                            attrs: { role: "separator" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(5)
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", [_c("router-view")], 1)
       ]),
       _vm._v(" "),
-      _c("div")
-    ])
-  ])
+      _c("Footer")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -32902,8 +32904,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         labels: ["Available Cars " + AvailableCars, "Busy Cars " + Unavailable],
                         datasets: [{
                             data: [AvailableCars, Unavailable],
-                            backgroundColor: ["#F7464A", "#46BFBD", "#4D5360"],
-                            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
+                            backgroundColor: ["#40ff00", "#F7464A"],
+                            hoverBackgroundColor: ["#ffff00", "#5AD3D1"]
                         }]
 
                     }

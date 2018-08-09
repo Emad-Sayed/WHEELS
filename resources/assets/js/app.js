@@ -17,8 +17,6 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('navbar', require('./components/Navbar.vue'));
-Vue.component('Myfooter', require('./components/Footer.vue'));
 
 
 const app = new Vue({
