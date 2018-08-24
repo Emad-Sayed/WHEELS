@@ -17,7 +17,7 @@ class CarController extends Controller
 
     public function index()
     {
-        $cars=Car::paginate(10);
+        $cars=Car::with('RentedCar')->paginate(10);
         return response ()->json(['success'=>$cars],200);
     }
     public function GetAll()
@@ -62,7 +62,7 @@ class CarController extends Controller
 
     public function show($id)
     {
-        $car=Car::with('type')->where('id',$id)->get();
+        $car=Car::with(['type','RentedCar'])->where('id',$id)->get();
         return response()->json(['success'=>$car],200);
     }
 

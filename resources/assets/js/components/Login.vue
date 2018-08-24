@@ -155,7 +155,7 @@
         },
         created(){
             if((isSet()))
-                this.$router.push('/home');
+                this.$router.push('/');
         },
         methods:{
             checkLogin(){
@@ -166,7 +166,7 @@
                             axios.post('api/details',{data:{}},{headers:GetHeaders()} )
                                 .then(response=>{
                                     window.localStorage.setItem('user', JSON.stringify(response.data.success))
-                                    this.$router.push('/home');
+                                    this.$router.push('/');
                                 })
                         }
                     })
@@ -182,7 +182,7 @@
                      axios.post('api/details',{data:{}},{headers:GetHeaders()} )
                          .then(response=>{
                              window.localStorage.setItem('user', JSON.stringify(response.data.success))
-                             this.$router.push('/home');
+                             this.$router.push('/');
                          })
                  })
                  .catch(err=>{

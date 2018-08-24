@@ -40,10 +40,6 @@ const router =new VueRouter({
             },
             children:[
                 {
-                    path:'home',
-                    component:Content
-                },
-                {
                     path:'support',
                     component:Supporters
                 },
@@ -89,8 +85,10 @@ const router =new VueRouter({
                             component: Chart
                         },
                     ],
-
-
+                },
+                {
+                    path:'',
+                    component:Content
                 },
             ]
         },

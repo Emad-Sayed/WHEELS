@@ -64,7 +64,7 @@
                 this.getCar()
             }
             else
-                this.$router.push('/home'); // if made refresh will redirect to home page
+                this.$router.push('/'); // if made refresh will redirect to home page
 
 
 
@@ -79,7 +79,11 @@
                             this.message='GET CAR'
                         }
                         else{
-                            this.message='UNAVAILABLE CAR'
+                            if(this.car.rented_car)
+                            this.message='UNAVAILABLE CAR  Till '+this.car.rented_car.end_date
+                            else
+                                this.message='UNAVAILABLE CAR (Maintenance Station)'
+
                         }
                     })
                     .catch(err=>{

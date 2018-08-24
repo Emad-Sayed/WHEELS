@@ -11,13 +11,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/#/home">WHEELS</a>
+                        <a class="navbar-brand" href="/#/">WHEELS</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="/#/home">Home <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/#/">Home <span class="sr-only">(current)</span></a></li>
                             <li><a href="/#/support">Supporters <span class="sr-only">(current)</span></a></li>
                             <li><a href="#">Favourits</a></li>
                         </ul>
